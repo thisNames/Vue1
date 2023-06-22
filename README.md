@@ -1,6 +1,3 @@
 # Vue1
-Vue1 基础学习
-
----
-
-CSDN URL : https://blog.csdn.net/X_188773?type=blog
+## 基础学习
+## [to csdn doc](https://blog.csdn.net/X_188773?type=blog)
