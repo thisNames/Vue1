@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>data数据对象</title>
+</head>
+
+<body>
+    <!--
+        数据对象
+            Vue 中用到的数据定义在 data 中
+            data 中可以写复杂的数据
+            渲染复杂类型的数据时，遵守 js 语法即可
+     -->
+    <div id="app">
+        {{message}}
+        <h2>
+            <!-- 对象点获取 -->
+            {{character.name}}
+            {{character.region}}
+        </h2>
+        <ul>
+            <li>
+                {{elements[0]}}
+            </li>
+            <li>
+                {{elements[1]}}
+            </li>
+            <li>
+                {{elements[2]}}
+            </li>
+            <li>
+                {{elements[3]}}
+            </li>
+            <li>
+                {{elements[4]}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                // 属性
+                message: "胡桃好啊",
+                // 对象
+                character: {
+                    name: "胡桃",
+                    region: "离月港"
+                },
+                // 数组
+                elements: ["火元素", "雷元素", "水元素", "冰元素", "风元素"]
+            }
+        })
+    </script>
+</body>
+
+</html>

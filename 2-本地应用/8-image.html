@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图片切换</title>
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/1.0.1/vue.min.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+    <!-- 
+        图片切换
+            1.  列表数据使用数组保存
+            2.  v-bind 指向设置元素属性，比如 src
+            3.  v-show 和 v-if 都可以切换元素的显示，频繁切换使用 v-show
+     -->
+    <div id="mask">
+        <div class="center">
+            <!-- 图片 -->
+            <img :src="imgArr[index]" alt="1" />
+            <!-- 左箭头 -->
+            <a href=" javascript:void(0)" class="left" @click="prev" v-show="index != 0">
+                <img src="../../image/switch/prev.png" alt="1" />
+            </a>
+            <!-- 右箭头 -->
+            <a href="javascript:void(0)" class="right" @click="next" v-show="index < imgArr.length - 1">
+                <img src="../../image/switch/next.png" alt="2" />
+            </a>
+
+            <img alt="">
+
+        </div>
+    </div>
+
+    <script>
+        // 创建 vue 对象
+        var app = new Vue({
+            el: "#mask",
+            data: {
+                // 图片路径
+                imgArr: [
+                    "../../image/switch/00.jpg",
+                    "../../image/switch/01.jpg",
+                    "../../image/switch/02.jpg",
+                    "../../image/switch/03.jpg",
+                    "../../image/switch/04.jpg",
+                    "../../image/switch/05.jpg",
+                    "../../image/switch/06.jpg",
+                    "../../image/switch/07.jpg",
+                    "../../image/switch/08.jpg",
+                    "../../image/switch/09.jpg",
+                    "../../image/switch/10.jpg",
+                ],
+                // 数组索引
+                index: 0
+            },
+            // 函数
+            methods: {
+                prev: function ()
+                {
+                    this.index--;
+                },
+                next: function ()
+                {
+                    this.index++;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

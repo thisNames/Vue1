@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- axios 库 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>vue + axios</title>
+</head>
+
+<body>
+    <!-- 
+        获取随机密码
+        https://v.api.aa1.cn/api/api-mima/mima.php?msg=10
+            方法：GET
+            参数：msg 密码长度
+     -->
+    <div id="app">
+        <input type="button" value="获取随机密码" v-on:click="getPass">
+        <p>
+            {{ password }}
+        </p>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                password: "12345678"
+            },
+            methods: {
+                getPass: function ()
+                {
+                    let self = this;
+                    axios.get("https://v.api.aa1.cn/api/api-mima/mima.php?msg=10")
+                        .then(res =>
+                        {
+                            console.log(res.data);
+                            self.password = res.data;
+                        }, err =>
+                        {
+                            console.warn(err);
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

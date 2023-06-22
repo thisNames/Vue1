@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>el挂载点</title>
+</head>
+
+<body>
+    <!-- 
+        可以嵌套
+
+        Vue 示例的作用范围
+            el 选中的元素及其内部的所有后代元素
+        选择器
+            CSS 选择器
+        设置的 dom 元素
+            除了    html body 的任何元素
+            建议    div
+            不支持  body 和 html  单标签
+     -->
+    {{message}}
+    <div id="app" class="app">
+        {{message}}
+        <span>{{message}}</span>
+        <span>{{message}}</span>
+        <span>{{name}}</span>
+        <span>{{element}}</span>
+    </div>
+    <script>
+        var app = new Vue({
+            // 选择器，CSS
+            el: ".app",
+            // 数据对象
+            data: {
+                message: "黑马程序员源",
+                name: "胡桃",
+                element: "火元素"
+            }
+        })
+    </script>
+</body>
+
+</html>

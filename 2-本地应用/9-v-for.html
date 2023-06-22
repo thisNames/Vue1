@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-for指向</title>
+</head>
+
+<body>
+    <!-- 
+        根据数据生成列表结构，响应式
+        
+        v-for = "(item,index) in <array>"
+            item    遍历的数据 （可获取的每一项） {{item}}
+            index   索引
+            in      for in 语句
+            array   数组/数据/对象
+
+        根据数据的个数，拷贝多个元素（包含后代及子元素）
+     -->
+    <div id="app">
+        <button type="button" v-on:click="add">添加数据 v</button>
+        <button type="button" v-on:click="remove">移除数据 up</button>
+        <ul>
+            <li v-for="(item,index) in array">
+                原神角色: {{item}} id: {{index + 1}}
+            </li>
+        </ul>
+        <h2 v-for="(item,index) in infos" v-bind:title="item.name">
+            {{item.name}} {{item.element}}
+            <a href="#">v - for {{index + 1}}</a>
+        </h2>
+    </div>
+
+    <script>
+        // Vue 对象
+        let app = new Vue({
+            el: "#app",
+            data: {
+                // 数组
+                array: ["钟离", "胡桃", "夜阑", "烟非"],
+                // 对象
+                infos: [
+                    {
+                        name: "钟离",
+                        element: "岩元素"
+                    },
+                    {
+                        name: "胡桃",
+                        element: "火元素"
+                    },
+                    {
+                        name: "夜阑",
+                        element: "水元素"
+                    },
+                    {
+                        name: "烟非",
+                        element: "火元素"
+                    }
+                ]
+            },
+            methods: {
+                add: function ()
+                {
+                    this.infos.push({
+                        name: "刻晴",
+                        element: "雷元素"
+                    });
+                },
+                remove: function ()
+                {
+                    this.infos.shift();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

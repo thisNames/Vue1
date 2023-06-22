@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-on属性</title>
+</head>
+
+<body>
+    <!-- 
+        元素 绑定事件
+            v-on:事件 = "方法"
+            点击事件 v-on:click = "myClick"
+
+        同等语法
+            v-on:事件 = "方法"
+            @事件 = "方法"
+        
+        重点
+            更改数据
+            使用 this.数据 访问 data 里的数据
+
+        总结
+            v-on 指定的作用是：为元素绑定事件
+            事件名不需要写 on
+            指定可以简写为 @
+            绑定的方法定义在 methods 属性中
+            方法内部通过 this 可以访问定义在 data 中的数据
+     -->
+    <div id="app">
+        <!-- 默认写法 v-on:-->
+        <input type="button" value="v-on指令 默认" v-on:click="doIt">
+        <!-- 简写@ -->
+        <input type="button" value="v-on指令 简写" @click="doIt">
+        <!-- 双击事件 -->
+        <input type="button" value="v-on属性 双击" @dblclick="doIt">
+
+        <!-- 获取 data 数据 -->
+        <h2 @click="changeFood">
+            {{food}}
+        </h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                food: "是在离月港啊"
+            },
+            // methods 与 data ，el 是同级的
+            methods: {
+                doIt: function ()
+                {
+                    alert("胡桃火元素啊");
+                },
+                changeFood: function ()
+                {
+                    // 使用 this 访问 data 里的数据
+                    this.food += "胡桃";
+                    console.log(this.food);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

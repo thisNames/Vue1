@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>计数器案例</title>
+    <style>
+        #app {
+            width: 480px;
+            height: 100px;
+            margin: 200px auto;
+        }
+
+        .input-num {
+            margin-top: 20px;
+            height: 100%;
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 4px black;
+        }
+
+        .input-num button {
+            width: 150px;
+            height: 100%;
+            font-size: 40px;
+            color: gray;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .input-num span {
+            height: 100%;
+            font-size: 40px;
+            flex: 1;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+        计数器 
+        
+        步骤
+            1.  创建 Vue 实例：el（挂载点），data（数据），methods（方法）
+            2.  v-on 指令绑定事件，简写为@
+            3.  方法通过 this，获取 data 中的数据
+    -->
+    <div id="app">
+        <div class="input-num">
+            <button @click="sub">-</button>
+            <span>
+                {{num}}
+            </span>
+            <button @click="add">+</button>
+        </div>
+    </div>
+
+    <script>
+        // 创建Vue实例
+        var app = new Vue({
+            el: "#app",
+            data: {
+                num: 1
+            },
+            methods: {
+                add: function ()
+                {
+                    console.log("add++");
+                    if (this.num >= 10)
+                    {
+                        alert("已经是最大值了");
+                        return;
+                    }
+                    this.num++;
+                },
+                sub: function ()
+                {
+                    console.log("sub--");
+                    if (this.num <= 0)
+                    {
+                        alert("已经是最小值了");
+                        return;
+                    }
+                    this.num--;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-text属性</title>
+</head>
+
+<body>
+    <!-- 
+        设置 textContent
+            在 元素 属性里添加 v-text 属性
+        表达式
+            +"value"
+        重点
+            v-text 属性的作用是：设置标签的内容（textContent） 区
+            默认写法是全部替换，使用插值表达式 {{}} 可以替换指定内容
+     -->
+    <div id="app">
+        <!-- 替换全部，使用 v-text 属性 -->
+        <h2 v-text="message+'!'">火元素</h2>
+        <h2 v-text="info+'!'">火元素</h2>
+
+        <!-- 替换部分，使用模板语法 -->
+        <h2>
+            {{message+"!"}}火元素
+        </h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好呀胡桃",
+                info: "火元素"
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .active {
+            border: rebeccapurple 1px solid;
+        }
+    </style>
+    <title>v-bind指令</title>
+</head>
+
+<body>
+    <!--
+        设置元素属性
+            v-bind 为元素绑定属性
+            完整写法 v-bind:属性名
+            简写   :属性名
+            如果设置的是 class ,建议使用对象写法 {类名:条件}    
+    -->
+    <div id="app">
+        <!-- 完整写法 v-bind:属性名 -->
+        <img v-bind:src="imgSrc" alt="png" width="300px">
+
+        <!-- 简写 :属性名-->
+        <img :src="imgSrc" alt="png" width="300px">
+
+        <!-- title -->
+        <img :src="imgSrc" :title="imgTitle+'!!!'" alt="png" width="300px">
+
+        <!-- 类名绑定,使用三位运算 -->
+        <img :src="imgSrc" alt="png" width="300px" :class="isActive?'active':''" @click="toggleActive">
+
+        <!-- 使用对象写法  active 是否生效,取决于 isActive 的值 true/false-->
+        <img :src="imgSrc" alt="png" width="300px" :class="{active:isActive}" @click="toggleActive">
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgSrc: "../../image/p2.png",
+                imgTitle: "AI 绘画动漫少女",
+                isActive: false
+            },
+            methods: {
+                toggleActive: function ()
+                {
+                    this.isActive = !this.isActive;
+                }
+            }
+        });       
+    </script>
+</body>
+
+</html>

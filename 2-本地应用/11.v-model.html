@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-model指令</title>
+</head>
+
+<body>
+    <!-- 
+        双向数据绑定
+            1.  需要跟表单元素一起使用， form,input ...       
+            2.  两边的数据都会，同步更新   input.value \<---\> data.message
+            3.  绑定的数据会跟，表单的数据相关联
+    -->
+    <div id="app">
+        <input v-model="message" type="text" @keyup.enter="GetMe" />
+        <h2>
+            更新数据: {{message}}
+        </h2>
+        <hr>
+        <input type="button" value="message" v-on:click="SetM">
+        <input type="text" v-model="changeMessage" placeholder="请输入新的数据" />
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "火元素胡桃",
+                changeMessage: ""
+            },
+            methods: {
+                GetMe: function ()
+                {
+                    alert(this.message);
+                },
+                SetM: function ()
+                {
+                    this.message = this.changeMessage;
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-on补充</title>
+</head>
+
+<body>
+    <!-- 
+        自定义参数            
+            实参
+                function(x,y,...n);
+
+            行参
+                function(x,y,...n){}
+
+            事件修饰符                
+                @keyup.<按键名称> = "function"
+                    按键抬起.限制的按键
+                    没有限制的，默认是任意键
+            
+            1. 写成函数调用的方式
+            2. 事件修饰符，使用 点 限定
+
+     -->
+    <div id="app">
+        <!-- 传入实参 -->
+        <input type="button" value="doIt" v-on:click="doIt('火元素',19)">
+
+        <!-- 事件修饰符 -->
+        <input type="text" @keyup.enter="sayHi">
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                // 设置形参
+                doIt: function (element, age)
+                {
+                    console.log("胡桃 doIt", element, age);
+                },
+                sayHi: function ()
+                {
+                    alert("胡桃好呀！");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 开发环境版本(vue)，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>v-html属性</title>
+</head>
+
+<body>
+    <!-- 
+        设置 innerHTML
+            普通文本，跟 v-text 一样没有啥效果
+            html 语法的文本，会替换成指定的 标签元素 (innerHTML)
+            默认全部替换
+
+        重点
+            v-html 指令的作用是：设置元素的 innerHTML
+            内容中有 html 结构会被解析为标签
+            v-text 指定无论内容是啥，都指定解析为文本
+            解析 html 使用 v-html，解析文本使用 v-text
+     -->
+    <div id="app">
+        <p v-html="content"></p>
+        <p v-html="content"></p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                content: "<h1>你好呀胡桃</h1>"
+            }
+        })
+    </script>
+</body>
+
+</html>
